@@ -40,20 +40,13 @@
         <item name="android:background">#E82D50</item>
     </style>
 
-    <style name = "RecipeFormAddButtonStyle">
+    <style name = "AddImageButtonStyle">
         <item name="android:background">@drawable/ic_add_circle_outline_pink_24dp</item>
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
-    </style>
-
-    <style name="Ingredient">
-        <item name="android:layout_height">80dp</item>
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:background"></item>
     </style>
 
     <style name="AppTheme.NoActionBar">
