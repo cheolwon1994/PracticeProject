@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MemoWriteActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_memo_form"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <ImageButton
+            android:id="@+id/arrow_back2_ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back_24dp" />
+
+        <TextView
+            android:id="@+id/toolbar_title_recipe_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="레시피 등록"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/done_ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_done_24dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/textViewInst1"
+                android:text="메모 제목"
+                style="@style/TextViewStyle"/>
+
+            <EditText
+                android:id="@+id/memo_title"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:paddingLeft="10sp"
+                android:gravity="center_vertical"
+                android:hint="메모의 제목을 입력해 주세요"
+                android:textSize="15sp"
+                android:background="@null"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/textViewInst2"
+                android:text="메모 첨부 사진"
+                style="@style/TextViewStyle"/>
+
+            <ImageView
+                android:id="@+id/meno_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_camera"/>
+
+            <TextView
+                android:id="@+id/textViewInst3"
+                android:text="메모 내용"
+                style="@style/TextViewStyle"/>
+
+            <EditText
+                android:id="@+id/cooking_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:hint="메모 내용을 입력해 주세요"
+                android:textSize="15sp"
+                android:background="@null"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

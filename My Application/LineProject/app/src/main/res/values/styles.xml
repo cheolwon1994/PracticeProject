@@ -30,7 +30,7 @@
         <item name="android:background">#999999</item>
     </style>
 
-    <style name="RecipeFormTextViewStyle">
+    <style name="TextViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40sp</item>
         <item name="android:paddingLeft">10sp</item>

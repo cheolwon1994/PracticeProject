@@ -25,13 +25,22 @@
                 android:visibility="visible"
                 android:textColor="@android:color/background_light"
                 android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/write_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="15sp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_write_24dp" />
         </androidx.appcompat.widget.Toolbar>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerShopIngredientView"
+                android:id="@+id/recyclerMemoView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
