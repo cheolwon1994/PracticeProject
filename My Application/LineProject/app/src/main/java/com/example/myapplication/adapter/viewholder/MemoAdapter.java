@@ -4,85 +4,68 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.MemoListItemView;
 import com.example.myapplication.R;
 import com.example.myapplication.item.MemoData;
 import java.util.ArrayList;
+import java.util.List;
 
-public class MemoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class MemoAdapter extends BaseAdapter {
 
-    private static final int TYPE_ITEM = 1;
-    private ArrayList<MemoData> listMemo = new ArrayList<>();
-    private Context context;
-    private String memo_Id;
+    private Context mContext;
 
-    class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView title;
-        private TextView content;
-        private TextView date;
-        private ImageView imagepath;
+    private List<MemoData> mItems = new ArrayList<MemoData>();
 
-        ItemViewHolder(View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.memoTitle);
-            date = itemView.findViewById(R.id.memoDate);
-            content = itemView.findViewById(R.id.memoContent);
-            imagepath = itemView.findViewById(R.id.memoImage);
+    public MemoAdapter(Context context) {
+        mContext = context;
+    }
+    public void clear() {
+        mItems.clear();
+    }
+    public void addItem(MemoData it) {
+        mItems.add(it);
+    }
+    public void setListItems(List<MemoData> lit) {
+        mItems = lit;
+    }
+    public int getCount() {
+        return mItems.size();
+    }
+    public Object getItem(int position) {
+        return mItems.get(position);
+    }
+    public boolean areAllItemsSelectable() {
+        return false;
+    }
+    public boolean isSelectable(int position) {
+        try {
+            return mItems.get(position).isSelectable();
+        } catch (IndexOutOfBoundsException ex) {
+            return false;
         }
+    }
+    public long getItemId(int position) {
+        return position;
+    }
 
-        void onBind(MemoData memoData, int position) {
-            String temp = memoData.getImagePath();
-//            temp = temp.replace("/", "%2F");
-//            String sum = ImageURL + temp;
-//            try {
-//                URL url = new URL(sum);
-//                Picasso.get().load(url.toString()).into(ingredient_image);
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            }
-            memo_Id = memoData.getMemo_Id();
-            title.setText(memoData.getTitle());
-            content.setText(String.valueOf(memoData.getContent()));
-            date.setText(memoData.getDate());
-            itemView.setOnClickListener(this);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        MemoListItemView itemView;
+        if (convertView == null) {
+            itemView = new MemoListItemView(mContext);
+        } else {
+            itemView = (MemoListItemView) convertView;
         }
-
-        @Override
-        public void onClick(View view) { int pos = getAdapterPosition() ;}
-    }
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        this.context = parent.getContext();
-        RecyclerView.ViewHolder holder;
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_memo, parent, false);
-        holder = new MemoAdapter.ItemViewHolder(view);
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MemoAdapter.ItemViewHolder itemViewHolder = (MemoAdapter.ItemViewHolder) holder;
-        itemViewHolder.onBind(listMemo.get(position), position);
-    }
-
-    @Override
-    public int getItemViewType(int position){ return TYPE_ITEM; }
-
-    @Override
-    public int getItemCount() {
-        return listMemo.size();
-    }
-
-    public void addItem(MemoData memoData) {
-        listMemo.add(memoData);
-    }
-    public void removeItem(int position){
-        listMemo.remove(position);
-        notifyItemRemoved(position);
+        // 현재아이템 불러오기
+        itemView.setContents(0, ((String) mItems.get(position).getData(0)));
+        itemView.setContents(1, ((String) mItems.get(position).getData(1)));
+        itemView.setContents(1, ((String) mItems.get(position).getData(2)));
+        itemView.setContents(3, ((String) mItems.get(position).getData(4)));
+        return itemView;
     }
 }
